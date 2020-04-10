@@ -6,6 +6,13 @@
     ~/.config/i3:
       create: true
       path: i3
+    ~/.config/sway:
+      create: true
+      path: sway
+    ~/.config/waybar:
+      create: true
+      path: waybar
+
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
