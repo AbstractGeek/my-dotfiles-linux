@@ -12,7 +12,9 @@
     ~/.config/waybar:
       create: true
       path: waybar
-
+    ~/.config/redshift:
+      create: true
+      path: redshift
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
