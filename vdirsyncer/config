@@ -1,0 +1,21 @@
+[general]
+status_path = "~/Private/Calendar/.vdirsyncer/status/"
+
+[pair my_calendars]
+a = "local_calendar"
+b = "google_calendar"
+collections = ["from a", "from b"]
+metadata = ["color", "displayname"]
+
+[storage local_calendar]
+type = "filesystem"
+path = "~/Private/Calendar/"
+fileext = ".ics"
+
+[storage google_calendar]
+type = "google_calendar"
+token_file = "~/Private/Calendar/.vdirsyncer/token_file"
+client_id.fetch = ["command", "~/Private/Calendar/.vdirsyncer/get_id.sh"]
+client_secret.fetch = ["command", "~/Private/Calendar/.vdirsyncer/get_secret.sh"]
+
+
