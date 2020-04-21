@@ -1,6 +1,11 @@
 # i3 config file (v4)
 
 ########################################
+## Includes ##
+include dracula
+########################################
+
+########################################
 ## Set programs ##
 set 
 {
@@ -39,43 +44,6 @@ exec swayidle -w \
 
 
 ########################################
-## Input configuration ##
-input * {
-    xkb_options caps:swapescape
-}
-########################################
-
-
-########################################
-## Output configuration ##
-
-########################################
-
-
-########################################
-## Beautification ##
-# Font
-set $font           pango:monospace 10
-# Window borders
-set 
-{
-    $border         5
-    $nofocus        $background
-    $focus          $purple
-    $titletxt       $foreground
-    $titlepad       10
-    $gaps_inner     20
-    $gaps_outer     10
-    #smart_gaps on
-}
-# Start waybar
-bar {
-        swaybar_command waybar
-}
-########################################
-
-
-########################################
 ## Workspaces ##
 set
 {
@@ -90,6 +58,69 @@ set
 	$ws9            9
 	$ws10           10
 }
+########################################
+
+
+########################################
+## Input configuration ##
+input * {
+    xkb_options caps:swapescape
+}
+########################################
+
+
+########################################
+## Output configuration ##
+output * bg /home/dinesh/Pictures/Wallpapers/uchiha-itachi.jpg fill
+########################################
+
+
+########################################
+## Floating rules ##
+for_window [app_id="alacritty" instance="floating"] floating enable
+for_window [app_id="mpv"] floating enable
+for_window [app_id="imv"] floating enable
+########################################
+
+
+########################################
+## Beautification ##
+# Font, colors
+set $font           pango:monospace 10
+
+# Window borders
+set 
+{
+    $border         5
+    $nofocus        $background
+    $focus          $purple
+    $titletxt       $foreground
+}
+
+# Start waybar
+bar {
+        swaybar_command waybar
+}
+
+# Appearance
+client.focused          $focus   $focus   $titletxt $focus    $focus
+client.focused_inactive $nofocus $nofocus $titletxt $nofocus  $nofocus
+client.unfocused        $nofocus $nofocus $titletxt $nofocus  $nofocus
+client.urgent           $nofocus $nofocus $titletxt $nofocus  $nofocus
+
+    
+# Default borders
+default_floating_border	    pixel	$border
+default_border			    pixel	$border    
+########################################
+
+
+########################################
+## Behavior ##
+focus_follows_mouse     	no
+focus_wrapping          	false
+popup_during_fullscreen 	leave_fullscreen
+floating_modifier $mod normal
 ########################################
 
 
@@ -214,7 +245,6 @@ bindsym
     
     $mod+r                  mode "$resize"
 }
-floating_modifier $mod normal
 ########################################
 
 
@@ -245,3 +275,4 @@ bindsym
     $mod2+0         move container to workspace $ws10    
 }
 ########################################
+

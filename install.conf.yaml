@@ -15,6 +15,15 @@
     ~/.config/redshift:
       create: true
       path: redshift
+    ~/.config/vdirsyncer:
+      create: true
+      path: vdirsyncer
+    ~/.config/khal:
+      create: true
+      path: khal
+    ~/.config/environment.d:
+      create: true
+      path: environment
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
