@@ -1,6 +1,6 @@
 {
     // Waybar properties
-    "layer": "top", 
+    "layer": "bottom", 
     "position": "top", 
     "height": 25, 
     //"width":1280,
@@ -28,11 +28,13 @@
     },
     
     "cpu": {
-        "format": "{usage}% "
+        "format": "{usage}% ",
+        "on-click": "~/.config/waybar/cpu_usage.sh"
     },
     
     "memory": {
-        "format": "{}% "
+        "format": "{}% ",
+        "on-click": "~/.config/waybar/mem_usage.sh"
     },
     
     "temperature": {
@@ -92,10 +94,9 @@
         "interval": 60,
         "tooltip": false,
         "max-length": 25,
-        "format": "&#8986; {}",
-        //"exec": "khal list"
-        //"exec": "khal-now | cut -c1-30 | sed 's/$/...\n\n/'"
+        "format": "&#8986; {}",        
         "exec": "khal list now -df 'SKIPME' |  # tag headers as SKIPME
-            grep -v SKIPME | head -n 1 | sed -e 's/&/&amp;/g'"
+            grep -v SKIPME | head -n 1 | sed -e 's/&/&amp;/g'",
+        "on-click": "~/.config/waybar/khal_interactive.sh"
     }
 }

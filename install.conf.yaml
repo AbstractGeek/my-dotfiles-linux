@@ -24,6 +24,17 @@
     ~/.config/environment.d:
       create: true
       path: environment
-
+    ~/.config/freeplane/1.8.x/templates:
+      create: true
+      path: freeplane/templates      
+    ~/.config/rofi:
+      create: true
+      path: rofi
+    ~/.config/mako:
+      create: true
+      path: mako      
+    ~/.config/alacritty:
+      create: true
+      path: alacritty
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
