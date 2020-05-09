@@ -12,7 +12,9 @@ set
     $lock           swaylock -f -e -c 1d2021 --inside-color 000000b3
     $term           alacritty
     $floterm        alacritty -t "floating_term"
-    $launcher       j4-dmenu-desktop
+    #$launcher       j4-dmenu-desktop
+    $launcher       rofi -show drun
+    $wswitcher      rofi -show window
     $files          nautilus -w
     $screenshot     grim ~/Pictures/Screenshots/$(date +"%Y-%m-%d-%H-%M-%S").png
     $screenclip     slurp | grim -g - ~/Pictures/Screenshots/$(date +"%Y-%m-%d-%H-%M-%S").png
@@ -26,6 +28,8 @@ set
 {
     $mod            Mod4
     $mod2           Mod4+Shift
+    $mod3           Mod4+Control
+    $mod4           Mod4+Control+Shift
 }
 ########################################
 
@@ -75,7 +79,15 @@ output * bg /home/dinesh/Pictures/Wallpapers/uchiha-itachi.jpg fill
 ## Floating rules ##
 for_window [app_id="mpv"] floating enable
 for_window [app_id="imv"] floating enable
+for_window [app_id="pavucontrol"] floating enable
 for_window [app_id="Alacritty" title="floating_term"] floating enable
+########################################
+
+
+########################################
+## Position rules ##
+for_window [app_id="gsimplecal"] move position mouse 
+for_window [app_id="gsimplecal"] move down 150 px
 ########################################
 
 
@@ -169,6 +181,7 @@ bindsym
     $mod+Return             exec $term
     $mod2+Return            exec $floterm
     $mod+d                  exec --no-startup-id $launcher
+    $mod+Tab                exec --no-startup-id $wswitcher
     $mod2+c                 reload    
     $mod+Print              exec $screenclip
     $mod+Shift+Print        exec $screenshot
@@ -265,6 +278,12 @@ bindsym
     $mod2+8         move container to workspace $ws8
     $mod2+9         move container to workspace $ws9
     $mod2+0         move container to workspace $ws10    
+    
+    $mod3+Left      workspace prev_on_output
+    $mod3+Right     workspace next_on_output
+    
+    $mod4+Left      move container to workspace prev
+    $mod4+Right     move container to workspace next        
 }
 ########################################
 

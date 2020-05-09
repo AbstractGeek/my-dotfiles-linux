@@ -36,5 +36,8 @@
     ~/.config/alacritty:
       create: true
       path: alacritty
+    ~/.config/gsimplecal:
+      create: true
+      path: gsimplecal    
 - shell:
   - [git submodule update --init --recursive, Installing submodules]

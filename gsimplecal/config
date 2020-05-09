@@ -1,0 +1,30 @@
+## Config file for gsimplecal
+#
+# Calendar properties
+show_calendar = 1
+show_timezones = 1
+mark_today = 1
+show_week_numbers = 1
+close_on_unfocus = 1
+clock_format = [%a %b %d] %H:%M
+
+# Extra properties
+#external_viewer = khal "%c" # can be used to doubleclick a date and do an action. Figure it out.
+force_lang = en_US.utf8
+
+# Main window
+mainwindow_decorated = 0
+mainwindow_position = mouse
+mainwindow_sticky = 0
+mainwindow_skip_taskbar = 1
+mainwindow_resizable = 0
+mainwindow_xoffset = 1000
+mainwindow_yoffset = 1000
+
+# Add clocks
+clock_label = UTC
+clock_tz = :UTC
+clock_label = Stockholm
+clock_tz = :Europe/Stockholm
+clock_label = US-EDT
+clock_tz = :US/Eastern
