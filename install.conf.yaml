@@ -12,6 +12,9 @@
     ~/.config/waybar:
       create: true
       path: waybar
+    ~/.config/swaylock:
+      create: true
+      path: swaylock
     ~/.config/redshift:
       create: true
       path: redshift
@@ -39,5 +42,9 @@
     ~/.config/gsimplecal:
       create: true
       path: gsimplecal    
+    ~/.local/share/applications/:
+      glob: true
+      path: desktop-files/*
+    ~/.config/youtube-dl/config: youtube-dl.conf
 - shell:
   - [git submodule update --init --recursive, Installing submodules]

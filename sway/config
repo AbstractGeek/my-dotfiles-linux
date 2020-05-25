@@ -9,7 +9,7 @@ include dracula
 ## Set programs ##
 set 
 {
-    $lock           swaylock -f -e -c 1d2021 --inside-color 000000b3
+    $lock           swaylock -f
     $term           alacritty
     $floterm        alacritty -t "floating_term"
     #$launcher       j4-dmenu-desktop
@@ -40,6 +40,7 @@ exec --no-startup-id mako
 exec --no-startup-id redshift -c ~/.config/redshift/config
 exec --no-startup-id nm-applet
 exec --no-startup-id dropbox start
+exec swayidle timeout 300 'swaylock -f' timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' 
 ########################################
 
 
