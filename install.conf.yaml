@@ -46,5 +46,26 @@
       glob: true
       path: desktop-files/*
     ~/.config/youtube-dl/config: youtube-dl.conf
+    ~/.local/bin/:
+      glob: true
+      path: bin/*
+    ~/.config/systemd/user/:
+      glob: true
+      path: systemd/*
+    ~/.config/wofi:
+      create: true
+      path: wofi
+
+
+- clean:
+    ~/.config:
+      force: false 
+      recursive: true     
+    ~/.local:
+      force: false
+      recursive: true
+      
+      
+
 - shell:
   - [git submodule update --init --recursive, Installing submodules]

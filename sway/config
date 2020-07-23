@@ -14,6 +14,7 @@ set
     $floterm        alacritty -t "floating_term"
     #$launcher       j4-dmenu-desktop
     $launcher       rofi -show drun
+    #$launcher       wofi --show drun
     $wswitcher      rofi -show window
     $files          nautilus -w
     $screenshot     grim ~/Pictures/Screenshots/$(date +"%Y-%m-%d-%H-%M-%S").png
@@ -71,7 +72,27 @@ input * {
 
 
 ########################################
-## Output configuration ##
+## Monitor configuration ##
+set $laptop_mon LVDS-1
+set $desk_mon 'Dell Inc. DELL S2216H VJRF76671RXS'
+output $desk_mon pos 0,0 res 1920x1080
+output $laptop_mon pos 0,1080 res 1600x900
+bindsym XF86Display output $desk_mon toggle
+focus output $desk_mon
+
+# Workspace bind
+workspace $ws1  output $desk_mon
+workspace $ws2  output $desk_mon
+workspace $ws3  output $desk_mon
+workspace $ws4  output $desk_mon
+workspace $ws5  output $desk_mon
+workspace $ws6  output $laptop_mon
+workspace $ws7  output $laptop_mon
+workspace $ws8  output $laptop_mon
+workspace $ws9  output $laptop_mon
+workspace $ws10  output $laptop_mon
+
+# Background image
 output * bg /home/dinesh/Pictures/Wallpapers/uchiha-itachi.jpg fill
 ########################################
 

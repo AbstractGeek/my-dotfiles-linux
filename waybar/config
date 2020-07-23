@@ -8,7 +8,7 @@
     // Modules
     "modules-left": ["sway/workspaces", "sway/window", "sway/mode"],
     "modules-center": ["clock","custom/khal"], 
-    "modules-right": [ "tray", "pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "battery"],
+    "modules-right": [ "tray", "pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "idle_inhibitor", "battery"],
 
     // Modules configuration
     
@@ -18,6 +18,14 @@
         "format": "<span style=\"italic\">{}</span>"
     },
 
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        }
+    },
+    
     "tray": {
         "spacing": 10
     },
@@ -99,5 +107,36 @@
         "exec": "khal list now -df 'SKIPME' |  # tag headers as SKIPME
             grep -v SKIPME | head -n 1 | sed -e 's/&/&amp;/g' | cut -c 1-30",
         "on-click": "~/.config/waybar/khal_interactive.sh"
+    },
+    
+    "mpd": {
+        "server": "192.168.1.100",
+        "port": 6600,
+        "interval": 5,
+        "timeout": 30,        
+        "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}",
+        "format-disconnected": "<span color=\"#e6e6e6\">怒</span> ",
+        "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped",
+        "unknown-tag": "N/A",
+        "interval": 10,
+        "consume-icons": {
+            "on": " "
+        },
+        "random-icons": {
+            "off": "<span color=\"#f53c3c\"></span> ",
+            "on": " "
+        },
+        "repeat-icons": {
+            "on": " "
+        },
+        "single-icons": {
+            "on": "1 "
+        },
+        "state-icons": {
+            "paused": "",
+            "playing": ""
+        },
+        "tooltip-format": "{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S})",
+        "tooltip-format-disconnected": "MPD (disconnected)"
     }
 }
