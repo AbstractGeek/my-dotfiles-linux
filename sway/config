@@ -38,10 +38,15 @@ set
 ########################################
 ## Autostart ##
 exec --no-startup-id mako
-exec --no-startup-id redshift -c ~/.config/redshift/config
 exec --no-startup-id nm-applet
-exec --no-startup-id dropbox start
 exec swayidle timeout 300 'swaylock -f' timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' 
+#exec --no-startup-id redshift -c ~/.config/redshift/config
+# Applications
+exec --no-startup-id dropbox start
+exec --no-startup-id safeeyes
+exec --no-startup-id gammastep-indicator
+exec --no-startup-id swaymsg 'workspace 1; exec firefox'
+exec --no-startup-id swaymsg 'workspace 6; exec hamster'
 ########################################
 
 
@@ -77,6 +82,8 @@ set $laptop_mon LVDS-1
 set $desk_mon 'Dell Inc. DELL S2216H VJRF76671RXS'
 output $desk_mon pos 0,0 res 1920x1080
 output $laptop_mon pos 0,1080 res 1600x900
+#output $desk_mon pos 0,0 res 1280x720
+#output $laptop_mon pos 0,720 res 1600x900
 bindsym XF86Display output $desk_mon toggle
 focus output $desk_mon
 
@@ -93,7 +100,7 @@ workspace $ws9  output $laptop_mon
 workspace $ws10  output $laptop_mon
 
 # Background image
-output * bg /home/dinesh/Pictures/Wallpapers/uchiha-itachi.jpg fill
+output * bg /home/dinesh/Pictures/Wallpapers/biases-poster.jpg fit
 ########################################
 
 

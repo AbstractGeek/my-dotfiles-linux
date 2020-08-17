@@ -2,7 +2,7 @@
 #
 # Shows the event in the next 5-15 min
 
-events=$(khal list now $(date -d "15 min" +"%H:%M") -df '' --notstarted)
+events=$(khal list now $(date -d "15 min" +"%H:%M") -df '' --notstarted -d Birthdays)
 noevents="No events"
 if [ "$events" != "$noevents" ]; then
     eval "export $(egrep -z DBUS_SESSION_BUS_ADDRESS /proc/$(pgrep -u $LOGNAME waybar)/environ)"; notify-send -u normal -i /home/dinesh/Repositories/dotfiles/misc/calendar_icon.png 'Calendar event' "$events"

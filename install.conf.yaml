@@ -18,6 +18,9 @@
     ~/.config/redshift:
       create: true
       path: redshift
+    ~/.config/gammastep:
+      create: true
+      path: gammastep      
     ~/.config/vdirsyncer:
       create: true
       path: vdirsyncer
@@ -52,9 +55,6 @@
     ~/.config/systemd/user/:
       glob: true
       path: systemd/*
-    ~/.config/wofi:
-      create: true
-      path: wofi
 
 
 - clean:

@@ -227,14 +227,14 @@ draw_bold_text_with_bright_colors: true
 #  color: '#ffffff'
 
 # Background opacity
-background_opacity: 0.75
+background_opacity: 0.80
 
 selection:
   #semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
   save_to_clipboard: true
 
 # Allow terminal applications to change Alacritty's window title.
-dynamic_title: true
+#dynamic_title: true
 
 cursor:
   style: Block
