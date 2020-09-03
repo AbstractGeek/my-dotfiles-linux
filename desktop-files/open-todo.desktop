@@ -1,0 +1,8 @@
+[Desktop Entry]
+Version=2020.09
+Type=Application
+Terminal=false
+Exec=/home/dinesh/.local/bin/open-todo
+Name=Open todos
+Categories=Development
+Comment=Open todo app

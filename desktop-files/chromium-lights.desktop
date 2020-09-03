@@ -1,0 +1,8 @@
+[Desktop Entry]
+Version=2020.09
+Type=Application
+Terminal=false
+Exec=/home/dinesh/.local/bin/chromium-lights
+Name=Chromium Lights
+Categories=Development
+Comment=Chromium lights app

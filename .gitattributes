@@ -1,0 +1,5 @@
+bin/chromium-lights filter=git-crypt diff=git-crypt
+bin/open-todo filter=git-crypt diff=git-crypt
+*.key filter=git-crypt diff=git-crypt
+
+# secretdir/** filter=git-crypt diff=git-crypt
