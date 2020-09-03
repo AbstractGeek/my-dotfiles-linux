@@ -1,0 +1,11 @@
+[Unit]
+Description=gocryptfs Mount Unit
+ 
+[Service]
+Type=forking
+ExecStart=/home/dinesh/.local/bin/mount_cryptfs.sh
+Restart=on-failure
+RestartSec=30
+ 
+[Install]
+WantedBy=default.target

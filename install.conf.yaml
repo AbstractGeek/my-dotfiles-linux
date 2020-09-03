@@ -47,7 +47,7 @@
       path: gsimplecal    
     ~/.local/share/applications/:
       glob: true
-      path: desktop-files/*
+      path: desktop-files/*.desktop
     ~/.config/youtube-dl/config: youtube-dl.conf
     ~/.local/bin/:
       glob: true
@@ -59,10 +59,10 @@
 
 - clean:
     ~/.config:
-      force: false 
+      force: true 
       recursive: true     
     ~/.local:
-      force: false
+      force: true
       recursive: true
       
       

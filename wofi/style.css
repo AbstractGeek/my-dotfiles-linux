@@ -1,0 +1,45 @@
+window {
+	margin: 5px;
+	border: 2px solid cyan;
+	background-color: black;
+}
+
+#input {
+margin: 20px;
+border: 2px solid yellow;
+background-color: #282828;
+color: orange;
+}
+
+#inner-box {
+	margin: 5px;
+	border: none;
+	background-color: black;
+}
+
+#outer-box {
+	margin: 5px;
+	border: none;
+	background-color: black;
+}
+
+#scroll {
+	margin: 0px;
+	border: none;
+}
+
+#text {
+	margin: 5px;
+	border: none;
+	color: white;
+}
+
+
+#entry:selected {
+	background-color: #282828;
+}
+
+#text:selected {
+background-color: red;
+}
+
