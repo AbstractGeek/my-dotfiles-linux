@@ -96,7 +96,8 @@
             "car": "",
             "default": ["", "", ""]
         },
-        "on-click": "pavucontrol"
+        "on-click": "pavucontrol",
+        "on-click-right": "if pactl info | grep -q hdmi; then pactl set-card-profile 0 output:analog-stereo+input:analog-stereo; else pactl set-card-profile 0 output:hdmi-stereo+input:analog-stereo;  fi"
     },
         
     "custom/khal": {
