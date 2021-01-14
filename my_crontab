@@ -2,3 +2,5 @@
 */15     *          *        *        *        vdirsyncer sync
 */30     *          *        *        *        eval "export $(egrep -z DBUS_SESSION_BUS_ADDRESS /proc/$(pgrep -u $LOGNAME waybar)/environ)"; notify-send -u normal -i /home/dinesh/Repositories/dotfiles/misc/water_icon.png 'Drink Water' 'Its time to drink a glass of water'
 */5     *          *        *        *        /home/dinesh/.local/bin/khal_notification
+0       10         *        *        * /home/dinesh/.local/bin/download_newspapers
+0       16         *        *        * /home/dinesh/.local/bin/download_newspapers
