@@ -4,3 +4,4 @@
 */5     *          *        *        *        /home/dinesh/.local/bin/khal_notification
 0       10         *        *        * /home/dinesh/.local/bin/download_newspapers
 0       16         *        *        * /home/dinesh/.local/bin/download_newspapers
+0       18          *        *        *        eval "export $(egrep -z DBUS_SESSION_BUS_ADDRESS /proc/$(pgrep -u $LOGNAME waybar)/environ)"; notify-send -u normal -i /home/dinesh/Repositories/dotfiles/misc/sun_icon.svg 'Reduce Brightness' 'It is evening. Reduce your monitor brightness.'
