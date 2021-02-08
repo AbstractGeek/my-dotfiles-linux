@@ -55,7 +55,11 @@
     ~/.config/systemd/user/:
       glob: true
       path: systemd/*
-
+# All of config files are symlinked to .config
+    ~/.config/:
+      glob: true
+      path: config/*
+      relink: true
 
 - clean:
     ~/.config:
