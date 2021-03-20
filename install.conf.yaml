@@ -55,6 +55,9 @@
     ~/.config/systemd/user/:
       glob: true
       path: systemd/*
+    ~/.config/mpv:
+       create: true
+       path: mpv
 # All of config files are symlinked to .config
     ~/.config/:
       glob: true

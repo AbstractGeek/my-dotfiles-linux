@@ -39,8 +39,6 @@ set
 exec --no-startup-id mako
 exec --no-startup-id nm-applet
 exec swayidle timeout 300 'swaylock -f' timeout 360 'light -O; swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"; light -I' 
-exec --no-startup-id redshift -c ~/.config/redshift/config
-#exec --no-startup-id gammastep-indicator
 # Applications
 include my-startup-apps
 ########################################
@@ -76,8 +74,10 @@ input * {
 ## Monitor configuration ##
 set $laptop_mon LVDS-1
 set $desk_mon 'Dell Inc. DELL S2216H VJRF76671RXS'
-output $desk_mon pos 0,0 res 1920x1080
-output $laptop_mon pos 0,1080 res 1600x900
+set $alt_mon 'Dell Inc. DELL U2419H 4BXYTS2'
+output $desk_mon pos 0,-900 res 1920x1080
+output $alt_mon pos -1600,0 res 1920x1080
+output $laptop_mon pos 0,0 res 1600x900
 #output $desk_mon pos 0,0 res 1280x720
 #output $laptop_mon pos 0,720 res 1600x900
 bindsym XF86Display output $desk_mon toggle
