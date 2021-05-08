@@ -1,6 +1,6 @@
 window {
 	margin: 5px;
-	border: 2px solid cyan;
+	border: 1px solid purple;
 	background-color: black;
 }
 
@@ -36,10 +36,10 @@ color: orange;
 
 
 #entry:selected {
-	background-color: #282828;
+	background-color: purple;
 }
 
 #text:selected {
-background-color: red;
+background-color: none;
 }
 

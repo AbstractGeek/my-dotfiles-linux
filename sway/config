@@ -12,8 +12,9 @@ set
     $lock           swaylock -f
     $term           alacritty
     $floterm        alacritty -t "floating_term"
-    $applauncher    rofi -show drun
-    $exelauncher    rofi -show run
+    $applauncher    wofi --show drun
+    $exelauncher    rofi -show  drun
+    # $exelauncher    wofi --show run
     $wswitcher      rofi -show window
     $files          nautilus -w
     $screenshot     grim ~/Pictures/Screenshots/$(date +"%Y-%m-%d-%H-%M-%S").png
@@ -74,10 +75,9 @@ input * {
 ## Monitor configuration ##
 set $laptop_mon LVDS-1
 set $desk_mon 'Dell Inc. DELL S2216H VJRF76671RXS'
-set $alt_mon 'Dell Inc. DELL U2419H 4BXYTS2'
-output $desk_mon pos 0,-900 res 1920x1080
-output $alt_mon pos -1600,0 res 1920x1080
-output $laptop_mon pos 0,0 res 1600x900
+#set $alt_mon 'Dell Inc. DELL U2419H 4BXYTS2'
+output $desk_mon pos 0,0 res 1920x1080
+output $laptop_mon pos 0,1080 res 1600x900
 #output $desk_mon pos 0,0 res 1280x720
 #output $laptop_mon pos 0,720 res 1600x900
 bindsym XF86Display output $desk_mon toggle
