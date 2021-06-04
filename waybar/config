@@ -8,7 +8,7 @@
     // Modules
     "modules-left": ["sway/workspaces", "sway/window", "sway/mode"],
     "modules-center": ["clock","custom/khal"], 
-    "modules-right": [ "tray", "pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "idle_inhibitor", "battery"],
+    "modules-right": [ "tray", "pulseaudio", "network", "cpu", "memory", "temperature", "idle_inhibitor", "battery"],
 
     // Modules configuration
     
@@ -73,11 +73,13 @@
     },
 
     "network": {
-        "format-wifi": "{essid} ({signalStrength}%) ",
-        "format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
-        "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": "Disconnected ⚠",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+        "format-wifi": "{signalStrength}% ",
+        "format-ethernet": "",
+        "format-linked": "",
+        "format-disconnected": "⚠ /",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}",
+        "on-click": "{ifname}: {ipaddr}/{cidr}",
+        "tooltip-format-wifi": "{essid}"
     },
     
     "pulseaudio": {

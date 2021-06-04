@@ -16,7 +16,8 @@ set
     $exelauncher    rofi -show  drun
     # $exelauncher    wofi --show run
     $wswitcher      rofi -show window
-    $files          nautilus -w
+    # $files          nautilus -w
+    $files	    thunar
     $screenshot     grim ~/Pictures/Screenshots/$(date +"%Y-%m-%d-%H-%M-%S").png
     $screenclip     slurp | grim -g - ~/Pictures/Screenshots/$(date +"%Y-%m-%d-%H-%M-%S").png
 }
@@ -40,6 +41,9 @@ set
 exec --no-startup-id mako
 exec --no-startup-id nm-applet
 exec swayidle timeout 300 'swaylock -f' timeout 360 'light -O; swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"; light -I' 
+set $XOBPIPE $XDG_RUNTIME_DIR/xobpipe
+exec mkfifo $XOBPIPE 
+exec --no-startup-id tail -f $XOBPIPE | xob
 # Applications
 include my-startup-apps
 ########################################
@@ -96,7 +100,7 @@ workspace $ws9  output $laptop_mon
 workspace $ws10  output $laptop_mon
 
 # Background image
-output * bg /home/dinesh/Pictures/Wallpapers/biases-poster.jpg fit
+# output * bg /home/dinesh/Pictures/Wallpapers/biases-poster.jpg fit
 ########################################
 
 
@@ -112,7 +116,7 @@ for_window [app_id="Alacritty" title="floating_term"] floating enable
 ########################################
 ## Position rules ##
 for_window [app_id="gsimplecal"] move position mouse 
-for_window [app_id="gsimplecal"] move down 150 px
+for_window [app_id="gsimplecal"] move down 30 px
 ########################################
 
 
@@ -230,8 +234,10 @@ bindsym
 }
 bindsym --locked
 {
-    XF86MonBrightnessUp     exec --no-startup-id light -S "$(light -G | awk '{ print int(($1 + .72) * 1.4) }')"
-    XF86MonBrightnessDown   exec --no-startup-id light -S "$(light -G | awk '{ print int($1 / 1.4) }')"C
+    XF86MonBrightnessUp exec --no-startup-id light -S "$(light -G | awk '{ print int(($1 + .72) * 1.4) }')" && light -G | cut -d'.' -f1 > $XOBPIPE
+    XF86MonBrightnessDown exec --no-startup-id light -S "$(light -G | awk '{ print int($1 / 1.4) }')" && light -G | cut -d'.' -f1 > $XOBPIPE
+    # XF86MonBrightnessUp     exec --no-startup-id light -S "$(light -G | awk '{ print int(($1 + .72) * 1.4) }')"
+    # XF86MonBrightnessDown   exec --no-startup-id light -S "$(light -G | awk '{ print int($1 / 1.4) }')"
     XF86AudioPlay           exec playerctl play-pause
     XF86AudioNext           exec playerctl next
     XF86AudioPrev           exec playerctl previous
