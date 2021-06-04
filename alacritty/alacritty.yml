@@ -261,8 +261,8 @@ mouse:
   hide_when_typing: true
 
   # Open url when control clicked
-  url:
-    modifiers: Control
+#  url:
+#    modifiers: Control
 
 # Mouse bindings
 mouse_bindings:

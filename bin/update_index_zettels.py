@@ -91,7 +91,7 @@ def main():
         with open(os.path.join(base_folder, ind_zettels[0]), 'a') as ind_file:
             ind_file.write('# New zettels \n')
             for line in uid_append:
-                ind_file.write('- ' + line)
+                ind_file.write(line)
             ind_file.write('\n')
 
 
