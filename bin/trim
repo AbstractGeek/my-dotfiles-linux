@@ -1,0 +1,9 @@
+#!/bin/sh
+# A small shell script to trim ssd harddisk once everyday
+# Logs the trimmed details to the below location
+LOG=$HOME/.local/logs/trim.log
+echo "*** $(date -R) ***" >> $LOG
+# Trim partitions and save stats in the log
+fstrim -v / >> $LOG
+fstrim -v /home >> $LOG
+fstrim -v /mnt/bifrost >> $LOG
