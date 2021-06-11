@@ -9,15 +9,15 @@ include dracula
 ## Set programs ##
 set 
 {
-    $lock           swaylock -f
+    $lock           "swaylock -f; playerctl pause"
     $term           alacritty
     $floterm        alacritty -t "floating_term"
     $applauncher    wofi --show drun
     $exelauncher    rofi -show  drun
-    # $exelauncher    wofi --show run
+    # $exelauncher  wofi --show run
     $wswitcher      rofi -show window
-    # $files          nautilus -w
-    $files	    thunar
+    # $files        nautilus -w
+    $files	        thunar
     $screenshot     grim ~/Pictures/Screenshots/$(date +"%Y-%m-%d-%H-%M-%S").png
     $screenclip     slurp | grim -g - ~/Pictures/Screenshots/$(date +"%Y-%m-%d-%H-%M-%S").png
 }
@@ -40,7 +40,7 @@ set
 ## Autostart ##
 exec --no-startup-id mako
 exec --no-startup-id nm-applet
-exec swayidle timeout 300 'swaylock -f' timeout 360 'light -O; swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"; light -I' 
+exec swayidle timeout 300 'swaylock -f; playerctl pause' timeout 360 'light -O; swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"; light -I' 
 set $XOBPIPE $XDG_RUNTIME_DIR/xobpipe
 exec mkfifo $XOBPIPE 
 exec --no-startup-id tail -f $XOBPIPE | xob

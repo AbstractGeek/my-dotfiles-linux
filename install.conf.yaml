@@ -15,54 +15,61 @@
     ~/.config/swaylock:
       create: true
       path: swaylock
-    ~/.config/redshift:
-      create: true
-      path: redshift
-    ~/.config/gammastep:
-      create: true
-      path: gammastep      
     ~/.config/vdirsyncer:
       create: true
       path: vdirsyncer
     ~/.config/khal:
       create: true
       path: khal
-    ~/.config/environment.d:
-      create: true
-      path: environment
     ~/.config/freeplane/1.8.x/templates:
       create: true
       path: freeplane/templates      
     ~/.config/rofi:
       create: true
       path: rofi
+    ~/.config/wofi:
+      create: true
+      path: wofi
     ~/.config/mako:
       create: true
-      path: mako      
+      path: mako   
+    ~/.config/xob:
+      create: true
+      path: xob    
     ~/.config/alacritty:
       create: true
       path: alacritty
     ~/.config/gsimplecal:
       create: true
       path: gsimplecal    
-    ~/.local/share/applications/:
-      glob: true
-      path: desktop-files/*.desktop
-    ~/.config/youtube-dl/config: youtube-dl.conf
     ~/.local/bin/:
       glob: true
       path: bin/*
-    ~/.config/systemd/user/:
-      glob: true
-      path: systemd/*
     ~/.config/mpv:
        create: true
        path: mpv
+    ~/.local/share/applications/:
+      glob: true
+      path: desktop-files/*.desktop
 # All of config files are symlinked to .config
     ~/.config/:
       glob: true
       path: config/*
       relink: true
+# Currently not in use
+#    ~/.config/redshift:
+#      create: true
+#      path: redshift
+#    ~/.config/gammastep:
+#      create: true
+#      path: gammastep      
+#    ~/.config/environment.d:
+#      create: true
+#      path: environment
+#    ~/.config/youtube-dl/config: youtube-dl.conf
+#    ~/.config/systemd/user/:
+#      glob: true
+#      path: systemd/*
 
 - clean:
     ~/.config:
