@@ -11,6 +11,7 @@ bin/myshrc.sh filter=git-crypt diff=git-crypt
 
 # Folders
 config/** filter=git-crypt diff=git-crypt
+borg/**  filter=git-crypt diff=git-crypt
 
 # Filetypes
 *.key filter=git-crypt diff=git-crypt
