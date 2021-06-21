@@ -51,6 +51,9 @@
     ~/.local/share/applications/:
       glob: true
       path: desktop-files/*.desktop
+    ~/.local/share/pandoc:
+       create: true
+       path: pandoc
 # All of config files are symlinked to .config
     ~/.config/:
       glob: true
