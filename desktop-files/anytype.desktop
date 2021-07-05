@@ -2,7 +2,7 @@
 Version=1.0
 Type=Application
 Terminal=false
-Exec=/home/dinesh/Software/Anytype-0.18.15.AppImage
+Exec=/home/dinesh/Software/Anytype-0.18.28.AppImage
 Name=Anytype
 Categories=Development
 Comment=Anytype alpha

@@ -3,6 +3,9 @@
       relink: true
 
 - link:
+    # Direct link to config files
+    ~/.profile: profile
+    # Link to folders
     ~/.config/i3:
       create: true
       path: i3
@@ -54,7 +57,7 @@
     ~/.local/share/pandoc:
        create: true
        path: pandoc
-# All of config files are symlinked to .config
+    # All of config files are symlinked to .config
     ~/.config/:
       glob: true
       path: config/*

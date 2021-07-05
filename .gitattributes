@@ -4,6 +4,7 @@ bin/open-todo filter=git-crypt diff=git-crypt
 bin/download_newspapers filter=git-crypt diff=git-crypt
 sway/my-startup-apps filter=git-crypt diff=git-crypt
 sway/my-shortcuts filter=git-crypt diff=git-crypt
+sway/my-customizations filter=git-crypt diff=git-crypt
 bin/mount_cryptfs.sh filter=git-crypt diff=git-crypt
 bin/mount_cryptfs filter=git-crypt diff=git-crypt
 bin/borgmatic-backup filter=git-crypt diff=git-crypt

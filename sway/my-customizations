@@ -1,0 +1,25 @@
+########################################
+## Extra modifiers for keybindings ##
+set 
+{
+    $mod5           Control+Alt
+}
+########################################
+
+########################################
+## App shortcuts ##
+set 
+{
+    $zotpick         $HOME/.local/bin/zotpicknix-pd
+}
+## Keyboard bindings ##
+bindsym
+{
+    $mod5+z          exec $zotpick
+}
+########################################
+
+########################################
+## Floating rules ##
+for_window [app_id="protonvpn"] floating enable
+########################################

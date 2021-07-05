@@ -283,8 +283,8 @@ bindsym
     $mod+r                  mode "$resize"
 }
 
-# Shortcuts
-include my-shortcuts
+# Shortcuts and customizations
+include my-customizations
 ########################################
 
 
