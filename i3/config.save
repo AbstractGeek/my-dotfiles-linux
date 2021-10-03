@@ -1,0 +1,321 @@
+# i3 config file (v4)
+
+########################################
+## Font ##
+font pango:monospace 8
+########################################
+
+
+########################################
+## Set programs ##
+set
+{
+    $lock           loginctl lock-session
+    $term           alacritty
+    $floterm         alacritty -t "floating_term"
+    $applauncher    rofi -show rrun
+    $exelauncher    rofi -show  drun
+    $wswitcher      rofi -show window
+    $files          nautilus -w
+    # $screenshot     grim ~/Pictures/Screenshots/$(date +"%Y-%m-%d-%H-%M-%S").png
+    # $screenclip     slurp | grim -g - ~/Pictures/Screenshots/$(date +"%Y-%m-%d-%H-%M-%S").png
+}
+########################################
+
+
+########################################
+## Modifier for keybindings ##
+set
+{
+    $mod            Mod4
+    $mod2           Mod4+Shift
+    $mod3           Mod4+Control
+    $mod4           Mod4+Control+Shift
+}
+########################################
+
+
+########################################
+## Autostart ##
+# exec --no-startup-id mako
+exec --no-startup-id nm-applet
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+# Applications
+include my-startup-apps
+########################################
+
+
+########################################
+## Workspaces ##
+set
+{
+	$ws1            1
+	$ws2            2
+	$ws3            3
+	$ws4            4
+	$ws5            5
+	$ws6            6
+	$ws7            7
+	$ws8            8
+	$ws9            9
+	$ws10           10
+}
+########################################
+
+
+########################################
+## Input configuration ##
+xmodmap swapkeys
+########################################
+
+
+########################################
+## Monitor configuration ##
+<!-- set $laptop_mon LVDS-1
+set $desk_mon 'Dell Inc. DELL S2216H VJRF76671RXS'
+#set $alt_mon 'Dell Inc. DELL U2419H 4BXYTS2'
+output $desk_mon pos 0,0 res 1920x1080
+output $laptop_mon pos 0,1080 res 1600x900
+#output $desk_mon pos 0,0 res 1280x720
+#output $laptop_mon pos 0,720 res 1600x900
+bindsym XF86Display output $desk_mon toggle
+focus output $desk_mon
+
+# Workspace bind
+workspace $ws1  output $desk_mon
+workspace $ws2  output $desk_mon
+workspace $ws3  output $desk_mon
+workspace $ws4  output $desk_mon
+workspace $ws5  output $desk_mon
+workspace $ws6  output $laptop_mon
+workspace $ws7  output $laptop_mon
+workspace $ws8  output $laptop_mon
+workspace $ws9  output $laptop_mon
+workspace $ws10  output $laptop_mon
+
+# Background image
+output * bg /home/dinesh/Pictures/Wallpapers/biases-poster.jpg fit -->
+########################################
+
+
+########################################
+## Floating rules ##
+for_window [app_id="mpv"] floating enable
+for_window [app_id="imv"] floating enable
+for_window [app_id="pavucontrol"] floating enable
+for_window [app_id="Alacritty" title="floating_term"] floating enable
+########################################
+
+
+########################################
+## Position rules ##
+for_window [app_id="gsimplecal"] move position mouse
+for_window [app_id="gsimplecal"] move down 150 px
+########################################
+
+
+########################################
+## Beautification ##
+# Font, colors
+set $font           pango:monospace 10
+
+# Window borders
+set
+{
+    $border         5
+    $nofocus        $background
+    $focus          $purple
+    $titletxt       $foreground
+}
+
+# Appearance
+client.focused          $focus   $focus   $titletxt $focus    $focus
+client.focused_inactive $nofocus $nofocus $titletxt $nofocus  $nofocus
+client.unfocused        $nofocus $nofocus $titletxt $nofocus  $nofocus
+client.urgent           $nofocus $nofocus $titletxt $nofocus  $nofocus
+
+
+# Default borders
+default_floating_border	    pixel	$border
+default_border			    pixel	$border
+########################################
+
+
+########################################
+## Behavior ##
+focus_follows_mouse     	no
+focus_wrapping          	false
+popup_during_fullscreen 	leave_fullscreen
+floating_modifier $mod normal
+########################################
+
+
+########################################
+## Modes ##
+set
+{
+    $resize Resize: (h/Left;l/Right;j/Down;k/Up)
+    $mode_system System: (l) lock, (e) logout, (s) shutdown, (r) reboot, (S) suspend, (R) UEFI
+
+}
+
+# Resize
+mode "$resize" {
+    bindsym
+    {
+            h           resize shrink width 10px
+            j           resize shrink height 10px
+            k           resize grow height 10px
+            l           resize grow width 10px
+            Left        resize shrink width 10px
+            Down        resize shrink height 10px
+            Up          resize grow height 10px
+            Right       resize grow width 10px
+
+            Return      mode "default"
+            Escape      mode "default"
+     }
+}
+
+# Power
+mode "$mode_system" {
+    bindsym
+    {
+            l           exec $lock, mode "default"
+            e           exit
+            s           exec --no-startup-id systemctl poweroff -i, mode "default"
+            r           exec --no-startup-id systemctl reboot, mode "default"
+            Shift+s     exec --no-startup-id systemctl suspend, mode "default"
+            Shift+r     exec --no-startup-id systemctl reboot --firmware-setup, mode "default"
+
+            Return      mode "default"
+            Escape      mode "default"
+     }
+}
+########################################
+
+
+########################################
+## Keyboard bindings ##
+
+# Basics
+bindsym
+{
+    $mod+Return             exec $term
+    $mod2+Return            exec $floterm
+    $mod+d                  exec --no-startup-id $applauncher
+    $mod2+d                 exec --no-startup-id $exelauncher
+    $mod+Tab                exec --no-startup-id $wswitcher
+    $mod2+c                 reload
+    $mod2+r		    restart
+    $mod+Print              exec $screenclip
+    $mod+Shift+Print        exec $screenshot
+    $mod+e                  exec $files
+    $mod+l                  exec $lock
+    $mod2+e                 mode "$mode_system"
+}
+
+# Multimedia
+bindsym
+{
+    XF86AudioRaiseVolume    exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10%
+    XF86AudioLowerVolume    exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10%
+    XF86AudioMute           exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
+    XF86AudioMicMute        exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
+    XF86ScreenSaver exec $lock
+    #XF86WebCam
+    #XF86Display
+    #XF86Display
+}
+bindsym --locked
+{
+    XF86MonBrightnessUp     exec --no-startup-id light -S "$(light -G | awk '{ print int(($1 + .72) * 1.4) }')"
+    XF86MonBrightnessDown   exec --no-startup-id light -S "$(light -G | awk '{ print int($1 / 1.4) }')"C
+    XF86AudioPlay           exec playerctl play-pause
+    XF86AudioNext           exec playerctl next
+    XF86AudioPrev           exec playerctl previous
+}
+
+# Window Management
+bindsym
+{
+    $mod2+q                 kill
+
+    $mod+Left               focus left
+    $mod+Down               focus down
+    $mod+Up                 focus up
+    $mod+Right              focus right
+
+    $mod2+h                 move left
+    $mod2+j                 move down
+    $mod2+k                 move up
+    $mod2+l                 move right
+
+    $mod2+Left              move left
+    $mod2+Down              move down
+    $mod2+Up                move up
+    $mod2+Right             move right
+
+    $mod+b                  splith
+    $mod+v                  splitv
+
+    $mod+s                  layout stacking
+    $mod+w                  layout tabbed
+    $mod+x                  layout toggle split
+
+    $mod2+space             floating toggle
+    $mod+space              focus mode_toggle
+
+    $mod+f                  fullscreen
+    $mod+a                  focus parent
+    $mod+c                  focus child
+
+    $mod2+minus             move scratchpad
+    $mod+minus              scratchpad show
+
+    $mod+r                  mode "$resize"
+}
+########################################
+
+
+########################################
+## Workspace bindings ##
+bindsym
+{
+    $mod+1          workspace $ws1
+    $mod+2          workspace $ws2
+    $mod+3          workspace $ws3
+    $mod+4          workspace $ws4
+    $mod+5          workspace $ws5
+    $mod+6          workspace $ws6
+    $mod+7          workspace $ws7
+    $mod+8          workspace $ws8
+    $mod+9          workspace $ws9
+    $mod+0          workspace $ws10
+
+    $mod2+1         move container to workspace $ws1
+    $mod2+2         move container to workspace $ws2
+    $mod2+3         move container to workspace $ws3
+    $mod2+4         move container to workspace $ws4
+    $mod2+5         move container to workspace $ws5
+    $mod2+6         move container to workspace $ws6
+    $mod2+7         move container to workspace $ws7
+    $mod2+8         move container to workspace $ws8
+    $mod2+9         move container to workspace $ws9
+    $mod2+0         move container to workspace $ws10
+
+    $mod3+Left      workspace prev_on_output
+    $mod3+Right     workspace next_on_output
+    $mod4+Left      move container to workspace prev
+    $mod4+Right     move container to workspace next
+}
+########################################
+
+
+
+
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+bar {
+        status_command i3status
+}

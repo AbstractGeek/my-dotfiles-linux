@@ -9,6 +9,9 @@
     ~/.config/i3:
       create: true
       path: i3
+    ~/.config/polybar:
+      create: true
+      path: polybar
     ~/.config/sway:
       create: true
       path: sway
