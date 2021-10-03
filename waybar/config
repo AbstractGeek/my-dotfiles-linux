@@ -107,9 +107,8 @@
         "tooltip": false,
         "max-length": 25,
         "format": "&#8986; {}",        
-        "exec": "khal list now -df 'SKIPME' |  # tag headers as SKIPME
-            grep -v SKIPME | head -n 1 | sed -e 's/&/&amp;/g' | cut -c 1-30",
-        "on-click": "~/.config/waybar/khal_interactive.sh"
+        "exec": "$HOME/.local/bin/khal_parse_events -t 90 -d",
+        "on-click": "$HOME/.config/waybar/khal_interactive.sh"
     },
     
     "mpd": {

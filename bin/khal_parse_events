@@ -1,0 +1,71 @@
+#!/usr/bin/env python
+
+import argparse
+from time import time, localtime, strftime
+import subprocess
+import regex as re
+from itertools import compress
+
+
+def main():
+    """Get khal list and output next event or notification"""
+    ## Defaults
+    no_events_str = "No events"
+
+    ## Parse input arguments ##
+    parser = argparse.ArgumentParser(description=("gives the next event"))
+    parser.add_argument(
+        "-t", "--time", default=15, type=float, help="time window for the next event"
+    )
+    parser.add_argument(
+        "-d",
+        "--dayevents",
+        default=False,
+        action="store_true",
+        help="Show dayevents too",
+    )
+    args = parser.parse_args()
+
+    ## Find events in the given time window ##
+    time_end = time() + args.time * 60
+    khal_out = subprocess.run(
+        [
+            "khal",
+            "list",
+            "now",
+            strftime("%Y-%m-%d %H:%M", localtime(time_end)),
+            "-df",
+            " ",
+        ],
+        capture_output=True,
+    )
+    events = list(
+        filter(
+            None,
+            [line.strip() for line in khal_out.stdout.decode("utf-8").splitlines()],
+        )
+    )
+
+    ## Find timed events vs dayevents
+    timed = re.compile("\d\d:\d\d")
+    time_flag = [True if timed.match(event) is not None else False for event in events]
+    timed_events = list(compress(events, time_flag))
+    day_events = list(compress(events, [not flag for flag in time_flag]))
+
+    ## Return output based on dayevents flag ##
+    if args.dayevents:
+        if timed_events:
+            print(timed_events[0])
+        elif day_events:
+            print(day_events[0])
+        else:
+            print(no_events_str)
+    else:
+        if timed_events:
+            print(timed_events[0])
+        else:
+            print(no_events_str)
+
+
+if __name__ == "__main__":
+    main()

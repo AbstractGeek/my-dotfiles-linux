@@ -1,8 +1,10 @@
 #!/bin/sh
 #
 # Shows the event in the next 5-15 min
+# To do - add a delay of 10-15 seconds so that vdir sync gets completed
 
-events=$(khal list now $(date -d "15 min" +"%H:%M") -df '' --notstarted -d Birthdays -d Contacts)
+sleep 5
+events=$($HOME/.local/bin/khal_parse_events)
 noevents="No events"
 if [ "$events" != "$noevents" ]; then
     eval "export $(egrep -z DBUS_SESSION_BUS_ADDRESS /proc/$(pgrep -u $LOGNAME waybar)/environ)"; notify-send -u normal -i /home/dinesh/Repositories/dotfiles/misc/calendar_icon.png 'Calendar event' "$events"
