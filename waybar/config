@@ -107,7 +107,7 @@
         "tooltip": false,
         "max-length": 25,
         "format": "&#8986; {}",        
-        "exec": "$HOME/.local/bin/khal_parse_events -t 90 -d",
+        "exec": "$HOME/.local/bin/khal_parse_events -t 60 -d -s",
         "on-click": "$HOME/.config/waybar/khal_interactive.sh"
     },
     

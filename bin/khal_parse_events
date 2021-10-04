@@ -24,21 +24,37 @@ def main():
         action="store_true",
         help="Show dayevents too",
     )
+    parser.add_argument(
+        "-s",
+        "--started",
+        default=False,
+        action="store_true",
+        help="Show started events too",
+    )
     args = parser.parse_args()
 
     ## Find events in the given time window ##
     time_end = time() + args.time * 60
-    khal_out = subprocess.run(
-        [
+    if args.started:
+        khal_command = [
             "khal",
             "list",
             "now",
             strftime("%Y-%m-%d %H:%M", localtime(time_end)),
             "-df",
             " ",
-        ],
-        capture_output=True,
-    )
+        ]
+    else:
+        khal_command = [
+            "khal",
+            "list",
+            "now",
+            strftime("%Y-%m-%d %H:%M", localtime(time_end)),
+            "--notstarted",
+            "-df",
+            " ",
+        ]
+    khal_out = subprocess.run(khal_command, capture_output=True)
     events = list(
         filter(
             None,
