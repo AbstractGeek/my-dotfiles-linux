@@ -5,3 +5,4 @@ xdg-icon-resource install --size 48 --context emblems bookshelf.png
 xdg-icon-resource install --size 48 --context emblems software.png
 xdg-icon-resource install --size 64 --context emblems code.png
 xdg-icon-resource install --size 48 --context emblems hdd.png
+xdg-icon-resource install --size 64 --context emblems robot-brain.png

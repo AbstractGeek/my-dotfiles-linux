@@ -7,8 +7,8 @@
 
     // Modules
     "modules-left": ["sway/workspaces", "sway/window", "sway/mode"],
-    "modules-center": ["clock","custom/khal"], 
-    "modules-right": [ "tray", "pulseaudio", "network", "cpu", "memory", "temperature", "idle_inhibitor", "battery"],
+    "modules-center": ["clock", "custom/khal"], 
+    "modules-right": [ "tray", "pulseaudio", "network", "cpu", "memory", "temperature", "custom/fan", "idle_inhibitor", "battery"],
 
     // Modules configuration
     
@@ -38,12 +38,12 @@
     
     "cpu": {
         "format": "{usage}% ",
-        "on-click": "~/.config/waybar/cpu_usage.sh"
+        "on-click": "~/.config/waybar/scripts/cpu_usage.sh"
     },
     
     "memory": {
         "format": "{}% ",
-        "on-click": "~/.config/waybar/mem_usage.sh"
+        "on-click": "~/.config/waybar/scripts/mem_usage.sh"
     },
     
     "temperature": {
@@ -108,8 +108,17 @@
         "max-length": 25,
         "format": "&#8986; {}",        
         "exec": "$HOME/.local/bin/khal_parse_events -t 60 -d -s",
-        "on-click": "$HOME/.config/waybar/khal_interactive.sh"
+        "on-click": "$HOME/.config/waybar/scripts/khal_interactive.sh"
     },
+    
+    "custom/fan": {
+      "interval": 5,
+      "tooltip": false,
+      "max-length": 25,
+      "format": "&#10056; {}",
+      "exec": "$HOME/.local/bin/fan_speed"
+    },
+    
     
     "mpd": {
         "server": "192.168.1.100",

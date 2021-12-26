@@ -22,6 +22,8 @@ mainwindow_xoffset = 1000
 mainwindow_yoffset = 1000
 
 # Add clocks
+clock_label = India
+clock_tz = :Asia/Kolkata
 clock_label = UTC
 clock_tz = :UTC
 clock_label = Stockholm

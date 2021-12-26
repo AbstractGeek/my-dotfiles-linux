@@ -78,10 +78,12 @@ input * {
 ########################################
 ## Monitor configuration ##
 set $laptop_mon LVDS-1
-set $desk_mon 'Dell Inc. DELL S2216H VJRF76671RXS'
+#set $desk_mon 'Dell Inc. DELL S2216H VJRF76671RXS'
+#set $desk_mon 'Acer Technologies VG270 0x0000752E'
 #set $alt_mon 'Dell Inc. DELL U2419H 4BXYTS2'
-output $desk_mon pos 0,0 res 1920x1080
-output $laptop_mon pos 0,1080 res 1600x900
+set $desk_mon HDMI-A-1
+output $desk_mon resolution 1920x1080 position 0,0
+output $laptop_mon resolution 1600x900 position 0,1080
 #output $desk_mon pos 0,0 res 1280x720
 #output $laptop_mon pos 0,720 res 1600x900
 bindsym XF86Display output $desk_mon toggle
@@ -149,7 +151,7 @@ default_border			    pixel	$border
 
 ########################################
 ## Behavior ##
-focus_follows_mouse     	no
+focus_follows_mouse     	yes
 focus_wrapping          	false
 popup_during_fullscreen 	leave_fullscreen
 floating_modifier $mod normal

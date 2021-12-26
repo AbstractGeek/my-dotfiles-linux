@@ -9,6 +9,9 @@
     ~/.config/i3:
       create: true
       path: i3
+    ~/.config/i3status:
+      create: true
+      path: i3status
     ~/.config/polybar:
       create: true
       path: polybar
